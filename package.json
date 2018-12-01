@@ -1,0 +1,20 @@
+{
+  "name": "good-jsx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jeff-hykin/good-jsx.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeff-hykin/good-jsx/issues"
+  },
+  "homepage": "https://github.com/jeff-hykin/good-jsx#readme"
+}
