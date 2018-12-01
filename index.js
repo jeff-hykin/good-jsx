@@ -33,6 +33,10 @@ window.HTMLElement.prototype.add = function (...inputs) {
     for (let each of inputs) {
         if (typeof each == 'string') {
             this.appendChild(new Text(each))
+        } else if (each instanceof Function) {
+            this.add(each())
+        } else if (each instanceof Array) {
+            this.add(...each)
         } else {
             this.appendChild(each)
         }
@@ -59,8 +63,10 @@ window.HTMLElement.prototype[Symbol.iterator] = function* () {
         yield this.childNodes[index++]
     }
 }
-// create a middleware system
-window.jsxChain = []
+// create a middleware system if it doesnt exist
+if (!window.jsxChain) {
+    window.jsxChain = []
+}
 // add it to JSX
 window.React = {
     createElement: (name, properties, ...children) => {
@@ -71,7 +77,6 @@ window.React = {
                 return element
             }
         }
-        Object.assign(document.createElement(name), properties).add(...children)
-        
+        return Object.assign(document.createElement(name), properties).add(...children)
     },
 }
