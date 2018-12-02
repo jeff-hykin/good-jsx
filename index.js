@@ -17,6 +17,9 @@ Object.defineProperties(window.HTMLElement.prototype, {
             for (let each of newChilden) {
                 this.add(each)
             }
+        },
+        get: function() {
+            return this.childNodes
         }
     },
     class: {
