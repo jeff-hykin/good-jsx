@@ -1,9 +1,15 @@
 // expand the HTML element ability
 Object.defineProperties(window.HTMLElement.prototype, {
-    // allow setting of all styles directly
+    // setting styles through a string
+    css : { set: Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'style').set },
+    // allow setting of styles through string or object
     style: {
         set: function (styles) {
-            Object.assign(this.style, styles);
+            if (typeof styles == "string") {
+                this.css = styles
+            } else {
+                Object.assign(this.style, styles)
+            }
         }
     },
     // allow setting of children directly
@@ -11,7 +17,7 @@ Object.defineProperties(window.HTMLElement.prototype, {
         set: function(newChilden) {
             // remove all children
             while (this.firstChild) {
-                this.removeChild(this.firstChild);
+                this.removeChild(this.firstChild)
             }
             // add new child nodes
             for (let each of newChilden) {
@@ -30,7 +36,7 @@ Object.defineProperties(window.HTMLElement.prototype, {
             return this.className
         }
     }
-});
+})
 // add()
 window.HTMLElement.prototype.add = function (...inputs) {
     for (let each of inputs) {
