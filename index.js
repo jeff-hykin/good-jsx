@@ -72,10 +72,21 @@ window.HTMLElement.prototype[Symbol.iterator] = function* () {
         yield this.childNodes[index++]
     }
 }
-// create a middleware system if it doesnt exist
+// create a setter/getter for <head>
+let originalHead = document.head
+// add a setter to document.head
+Object.defineProperty(document,"head", { 
+    set: (element) => {
+        document.head.add(...element.childNodes)
+    },
+    get: ()=>originalHead
+})
+
+// create a JSX middleware system if it doesnt exist
 if (!window.jsxChain) {
     window.jsxChain = []
 }
+
 // add it to JSX
 window.React = {
     createElement: (name, properties, ...children) => {
