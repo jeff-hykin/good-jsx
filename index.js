@@ -52,6 +52,8 @@ window.HTMLElement.prototype.add = function (...inputs) {
     }
     return this
 }
+// the special "add" case of the select method
+HTMLSelectElement.prototype.add = window.HTMLElement.prototype.add
 // addClass()
 window.HTMLElement.prototype.addClass = function (...inputs) {
     return this.classList.add(...inputs)
