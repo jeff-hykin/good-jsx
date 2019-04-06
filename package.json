@@ -1,6 +1,6 @@
 {
     "name": "good-jsx",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -17,7 +17,7 @@
         "url": "https://github.com/jeff-hykin/good-jsx/issues"
     },
     "dependencies": {
-        
+        "good-dom": "^4.1.2"
     },
     "homepage": "https://github.com/jeff-hykin/good-jsx#readme"
 }
