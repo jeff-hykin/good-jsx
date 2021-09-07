@@ -1,0 +1,2 @@
+- figure out how to handle get/set .style vs setAttribute("style")
+- have setters for all attributes on dom/svg elements (like cy, cx)

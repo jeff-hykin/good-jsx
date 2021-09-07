@@ -21,10 +21,17 @@ window.React = {
             }
         }
         if (key instanceof Function) {
-            if (isConstructor(key)) {
-                return new key({...properties, children})
+            const output = isConstructor(key) ? new key({...properties, children}) : key({...properties, children: children})
+            // allow async components
+            if (output instanceof Promise) {
+                const elementPromise = output
+                const placeholder = elementPromise.placeholder || document.createElement("div")
+                setTimeout(async () => {
+                    placeholder.replaceWith(await elementPromise)
+                }, 0)
+                return placeholder
             } else {
-                return key({...properties, children: children})
+                return output
             }
         }
         // create either an html element or an svg element
