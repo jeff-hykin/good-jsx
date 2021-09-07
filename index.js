@@ -28,11 +28,13 @@ window.React = {
             }
         }
         const element = document.createElement(key)
-        for (const [key, value] of Object.entries(properties)) {
-            try {
-                element.setAttribute(key, value)
-            } catch (error) {
-                element[key] = value
+        if (properties instanceof Object) {
+            for (const [key, value] of Object.entries(properties)) {
+                try {
+                    element.setAttribute(key, value)
+                } catch (error) {
+                    element[key] = value
+                }
             }
         }
         return element.add(...children)
