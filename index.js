@@ -21,7 +21,7 @@ window.React = {
             }
         }
         if (key instanceof Function) {
-            const output = isConstructor(key) ? new key({...properties, children}) : key({...properties, children: children})
+            const output = isConstructor(key) ? new key({...properties, children}) : key({...properties, children})
             // allow async components
             if (output instanceof Promise) {
                 const elementPromise = output
