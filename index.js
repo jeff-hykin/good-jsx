@@ -39,7 +39,8 @@ window.React = {
         if (properties instanceof Object) {
             for (const [key, value] of Object.entries(properties)) {
                 try {
-                    element.setAttribute(key, value)
+                    const kebabCase = key.replace(/(?<=[a-z])([A-Z])(?=[a-z])/g, (each)=>`-${each.toLowerCase()}`)
+                    element.setAttribute(kebabCase, value)
                 } catch (error) {
                 }
                 element[key] = value
